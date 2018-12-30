@@ -1,0 +1,29 @@
+version: '2'
+
+networks:
+  ros:
+    driver: bridge
+
+services:
+  ros-master:
+    image: ros:melodic-ros-core
+    command: stdbuf -o L roscore
+    networks:
+      - ros
+    restart: always
+
+  ros-dev:    
+    image: osrf/ros:melodic-desktop-full
+    depends_on:
+      - ros-master
+    environment:
+      - "ROS_MASTER_URI=http://ros-master:11311"
+      - "ROS_HOSTNAME=ros-dev"        
+    networks:
+      - ros
+    volumes:
+      - ../wanderbot-ws:/root/catkin-ws
+    working_dir: /root/catkin-ws
+    command: bash
+    tty: true
+    stdin_open: true

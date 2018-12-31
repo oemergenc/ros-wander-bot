@@ -21,9 +21,11 @@ services:
       - "ROS_HOSTNAME=ros-dev"
       - "QT_X11_NO_MITSHM=1"
       - DISPLAY
+    privileged: true  
     networks:
       - ros
     volumes:
+      - /dev/input:/dev/input
       - ../wanderbot-ws:/home/ros/catkin-ws
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
     working_dir: /home/ros/catkin-ws

@@ -6,24 +6,27 @@ networks:
 
 services:
   ros-master:
-    image: ros:melodic-ros-core
+    image: ros:indigo-ros-core
     command: stdbuf -o L roscore
     networks:
       - ros
     restart: always
 
   ros-dev:    
-    image: osrf/ros:melodic-desktop-full
+    image: jacknlliu/ros:indigo-ide
     depends_on:
       - ros-master
     environment:
       - "ROS_MASTER_URI=http://ros-master:11311"
-      - "ROS_HOSTNAME=ros-dev"        
+      - "ROS_HOSTNAME=ros-dev"
+      - "QT_X11_NO_MITSHM=1"
+      - DISPLAY
     networks:
       - ros
     volumes:
-      - ../wanderbot-ws:/root/catkin-ws
-    working_dir: /root/catkin-ws
-    command: bash
+      - ../wanderbot-ws:/home/ros/catkin-ws
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    working_dir: /home/ros/catkin-ws
+    command: terminator
     tty: true
     stdin_open: true

@@ -1,5 +1,5 @@
-# BEGIN ALL
 #!/usr/bin/env python
+# BEGIN ALL
 import rospy
 from geometry_msgs.msg import Twist
 

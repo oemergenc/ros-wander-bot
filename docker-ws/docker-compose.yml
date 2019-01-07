@@ -28,6 +28,7 @@ services:
       - ros
     volumes:
       - /dev/input:/dev/input
+      - /dev/dri:/dev/dri
       - ../wanderbot-ws:/home/ros/catkin-ws
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
     working_dir: /home/ros/catkin-ws

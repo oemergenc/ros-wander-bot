@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package>
+  <name>stockroom_bot</name>
+  <version>0.0.0</version>
+  <description>The stockroom_bot package</description>
+
+  <maintainer email="ros@todo.todo">ros</maintainer>
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>rospy</build_depend>
+  <exec_depend>rospy</exec_depend>
+
+  <export>
+  </export>
+</package>
